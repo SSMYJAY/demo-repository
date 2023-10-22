@@ -1,0 +1,192 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .bg-image {
+      /* The image used */
+      background-image: url("campus.jpg");
+      
+      /* Add the blur effect */
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      
+      /* Full height */
+      height: 100%; 
+      
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Position text in the middle of the page/image */
+    .bg-text {
+      background-color: white; /* Fallback color */
+      background-color: white; /* Black w/opacity/see-through */
+      color: crimson;
+      font-weight: bold;
+      border: 3px solid #f1f1f1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 50%;
+      padding: 20px;
+      text-align: center;
+    }
+    </style>
+    </head>
+
+    <body>
+    <div class="bg-image"></div>
+    
+    <div class="bg-text">
+      <h2>What qualities do you want in your friend?</h2>
+
+      <form action="/action_page.php">
+
+        <p><u><font color="black">Drink and Party:</font></u></p>
+
+        <input type="checkbox" id="Drinks" name="drink/party" value="Drinks">
+            <label for="Drinks">Drinks</label>
+        <input type="checkbox" id="Wine" name="drink/party" value="Wine">
+            <label for="Wine">Wine</label>
+        <input type="checkbox" id="Beer" name="drink/party" value="Beer">
+            <label for="Beer">Beer</label>
+        <input type="checkbox" id="Soju" name="drink/party" value="Soju">
+            <label for="Soju">Soju</label>
+        <input type="checkbox" id="Cocktail" name="drink/party" value="Cocktail">
+            <label for="Cocktail">Cocktail</label> 
+        <input type="checkbox" id="Nonalcoholic" name="drink/party" value="Nonalcoholic">
+            <label for="Nonalcoholic">Nonalcoholic</label>
+        <input type="checkbox" id="Pub" name="drink/party" value="Pub">
+            <label for="Pub">Pub</label>
+        <input type="checkbox" id="Bar" name="drink/party" value="Bar">
+            <label for="Bar">Bar</label> 
+        <input type="checkbox" id="Club" name="season" value="Club">
+            <label for="Club">Club</label>
+        <input type="checkbox" id="Party" name="season" value="Party">
+            <label for="Party">Party</label>
+
+        <p><u><font color="black">Sports:</font></u></p>
+
+        <input type="checkbox" id="Sports" name="Sports" value="Sports">
+            <label for="Sports"> Sports</label>
+        <input type="checkbox" id="Weights" name="Sports" value="Weights">
+            <label for="Weights"> Weights</label>
+        <input type="checkbox" id="Crossfit" name="Sports" value="Crossfit">
+            <label for="Crossfit"> Crossfit</label>
+        <input type="checkbox" id="Running" name="Sports" value="Running">
+            <label for="Running"> Running</label>
+        <input type="checkbox" id="Climbing" name="Sports" value="Climbing">
+            <label for="Climbing"> Climbing</label>
+        <input type="checkbox" id="Soccer" name="Sports" value="Soccer">
+            <label for="Soccer"> Soccer</label>
+        <input type="checkbox" id="Basketball" name="Sports" value="Basketball">
+            <label for="Basketball"> Basketball</label>
+        <input type="checkbox" id="Tennis" name="Sports" value="Tennis">
+            <label for="Tennis"> Tennis</label>
+        <input type="checkbox" id="Golf" name="Sports" value="Golf">
+            <label for="Golf"> Golf</label>
+        <input type="checkbox" id="Field" name="Sports" value="Field">
+            <label for="Field"> Field Sports</label>
+        <input type="checkbox" id="Court" name="Sports" value="Court">
+            <label for="Court"> Court Sports</label>
+        <input type="checkbox" id="Net" name="Sports" value="Net">
+            <label for="Net"> Net Sports</label>
+
+        <p><u><font color="black">Hobby:</font></u></p>
+
+        <input type="checkbox" id="Cooking" name="Hobby" value="Cooking">
+            <label for="Cooking"> Cooking</label>
+        <input type="checkbox" id="Baking" name="Hobby" value="Baking">
+            <label for="Baking"> Baking</label>
+        <input type="checkbox" id="Books" name="Hobby" value="Books">
+            <label for="Books"> Books</label>
+        <input type="checkbox" id="Photo" name="Hobby" value="Photo">
+            <label for="Photo"> Photo</label>
+        <input type="checkbox" id="Travel" name="Hobby" value="Travel">
+            <label for="Travel"> Travel</label>
+        <input type="checkbox" id="Hiking" name="Hobby" value="Hiking">
+            <label for="Hiking"> Hiking</label>
+        <input type="checkbox" id="Riding" name="Hobby" value="Riding">
+            <label for="Riding"> Riding</label>
+        <input type="checkbox" id="Camping" name="Hobby" value="Camping">
+            <label for="Camping"> Camping</label>
+        <input type="checkbox" id="Healing" name="Hobby" value="Healing">
+            <label for="Healing"> Healing</label>
+        <input type="checkbox" id="Festival" name="Hobby" value="Festival">
+            <label for="Festival"> Festival</label>
+        <input type="checkbox" id="Concert" name="Hobby" value="Concert">
+            <label for="Concert"> Concert</label>
+        <input type="checkbox" id="Museum" name="Hobby" value="Museum">
+            <label for="Museum"> Museum</label>
+        <input type="checkbox" id="Gallery" name="Hobby" value="Gallery">
+            <label for="Gallery"> Gallery</label>
+        <input type="checkbox" id="Activity" name="Hobby" value="Activity">
+            <label for="Activity"> Activity</label>
+        <input type="checkbox" id="Karaoke" name="Hobby" value="Karaoke">
+            <label for="Karaoke"> Karaoke</label>
+       
+        <p><u><font color="black">Journey:</font></u></p>
+
+        <input type="checkbox" id="Seoul" name="Journey" value="Seoul">
+            <label for="Seoul"> Seoul</label>
+        <input type="checkbox" id="Han" name="Journey" value="Han">
+            <label for="Han"> Han River</label>
+        <input type="checkbox" id="Busan" name="Journey" value="Busan">
+            <label for="Busan"> Busan</label>
+        <input type="checkbox" id="Jeju" name="Journey" value="Jeju">
+            <label for="Jeju"> Jeju</label>
+        <input type="checkbox" id="Ocean" name="Journey" value="Ocean">
+            <label for="Ocean"> Ocean</label>
+        <input type="checkbox" id="Mountain" name="Journey" value="Mountain">
+            <label for="Mountain"> Mountain</label>
+        <input type="checkbox" id="Historic" name="Journey" value="Historic">
+            <label for="Historic"> Historic</label>
+        <input type="checkbox" id="Nature" name="Journey" value="Nature">
+            <label for="Nature"> Nature</label>
+        <input type="checkbox" id="Drive" name="Journey" value="Drive">
+            <label for="Drive"> Drive</label>
+
+        <p><u><font color="black">Other:</font></u></p>
+
+        <input type="checkbox" id="Studying" name="Other" value="Studying">
+            <label for="Studying"> Studying together</label>
+        <input type="checkbox" id="Calling" name="Other" value="Calling">
+            <label for="Calling"> Calling</label>
+        <input type="checkbox" id="Pets" name="Other" value="Pets">
+            <label for="Pets"> Pets</label>
+        <input type="checkbox" id="Dogs" name="Other" value="Dogs">
+            <label for="Dogs"> Dogs</label>
+        <input type="checkbox" id="Cats" name="Other" value="Cats">
+            <label for="Cats"> Cats</label>
+        <input type="checkbox" id="Language" name="Other" value="Language">
+            <label for="Language">Language Exchange</label>
+        <input type="checkbox" id="Talking" name="Other" value="Talking">
+            <label for="Talking"> Talking</label>
+        
+        <br>
+        <br>
+        <br>
+        
+        <input type="submit" value="Submit">
+      </form>
+    </head>
+    <body>
+    
+    
+    
+</body>
+</html>
