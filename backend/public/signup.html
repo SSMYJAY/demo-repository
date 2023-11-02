@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">KU Friend Matcher</div>
+      <div class="content">
+        <form action="/auth/signup_process" method="post">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input
+                id="user"
+                type="text"
+                placeholder="Enter your username"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">KU Email</span>
+              <input
+                id="email"
+                type="text"
+                placeholder="Enter your KU email"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Major</span>
+              <input
+                id="major"
+                type="text"
+                placeholder="Enter your major"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Year</span>
+              <input
+                id="year"
+                type="text"
+                placeholder="Enter your year (eg. 2021)"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input
+                id="confirm_password"
+                type="password"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+          </div>
+          <p class="warning-text"></p>
+          <div class="button">
+            <input type="submit" value="Sign up" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="../scripts/validateSignup.js"></script>
+  </body>
+</html>
