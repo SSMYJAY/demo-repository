@@ -9,6 +9,11 @@ module.exports = (app) => {
   router.get("/login", auth.getLoginPage);
 
   router.get("/logout", function (request, response) {
+    response.cookie("jwt", "", {
+      expires: new Date(0),
+      secure: process.env.NODE_ENV !== "development",
+      httpOnly: false,
+    });
     request.session.destroy(function (err) {
       response.redirect("/");
     });
@@ -29,6 +34,7 @@ module.exports = (app) => {
     check("email").notEmpty().isEmail().normalizeEmail(),
     check("year").notEmpty().isNumeric().trim().escape(),
     check("major").notEmpty().trim().escape(),
+    check("gender").notEmpty().trim().escape(),
     check("password").notEmpty().escape(),
     check("confirmPassword").notEmpty().escape(),
     auth.processSignup
