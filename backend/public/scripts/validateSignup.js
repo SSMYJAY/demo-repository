@@ -13,6 +13,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const year = document.querySelector("#year").value;
     const password = document.querySelector("#password").value;
     const confirmPassword = document.querySelector("#confirm_password").value;
+    const genderRadioButtons = document.querySelectorAll(
+      'input[name="gender"]'
+    );
+
+    let selectedGender = null;
+    let gender = null;
+
+    for (const radioButton of genderRadioButtons) {
+      if (radioButton.checked) {
+        selectedGender = radioButton.id; // Get the ID of the selected radio button
+        break;
+      }
+    }
+
+    if (!selectedGender) {
+      warningMessage += "*Please select a gender. ";
+      isValid = false;
+    } else {
+      // Map the selected gender ID to the corresponding label
+      const genderLabels = {
+        "dot-1": "Male",
+        "dot-2": "Female",
+        "dot-3": "Other",
+        "dot-4": "Prefer not to say",
+      };
+      gender = genderLabels[selectedGender];
+    }
 
     // Username validation (only letters and numbers, at least 3 characters)
     if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
@@ -52,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         email,
         major,
         year,
+        gender,
         password,
         confirmPassword,
       };
