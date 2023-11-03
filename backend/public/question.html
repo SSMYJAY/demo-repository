@@ -1,170 +1,40 @@
 <html>
-<head>
+    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    * {
-      box-sizing: border-box;
-    }
-    
-    .bg-image {
-      /* The image used */
-      background-image: url("campus.jpg");
-      
-      /* Add the blur effect */
-      filter: blur(2px);
-      -webkit-filter: blur(2px);
-      
-      /* Full height */
-      height: 100%; 
-      
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    
-    /* Position text in the middle of the page/image */
-    .bg-text {
-      background-color: white; /* Fallback color */
-      background-color: white; /* Black w/opacity/see-through */
-      color: crimson;
-      font-weight: bold;
-      border: 3px solid #f1f1f1;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      width: 50%;
-      padding: 20px;
-      text-align: center;
-    }
-    </style>
+    <link rel="stylesheet" href="../css/question-style.css" />
+    <title>Questions</title>
     </head>
 
     <body>
     <div class="bg-image"></div>
     
     <div class="bg-text">
-      <h2>Time to Fill Out Your Profile!</h2>
 
       <form action="/action_page.php">
+        <h2>Time to Fill Out Your Profile!</h2>
         <p><u><font color="black">Select your MBTI:</font></u></p>
 
-        <input type="checkbox" id="ENTJ" name="mbti" value="ENTJ">
-            <label for="ENTJ"> ENTJ</label>
-        <input type="checkbox" id="ENFP" name="mbti" value="ENFP">
-            <label for="ENFP"> ENFP</label>
-        <input type="checkbox" id="ENTJ" name="mbti" value="ENTJ">
-            <label for="ENTJ"> ENTJ</label>
-        <input type="checkbox" id="ENTP" name="mbti" value="ENTP">
-            <label for="ENTP"> ENTP</label>
-        <input type="checkbox" id="ESFJ" name="mbti" value="ESFJ">
-            <label for="ESFJ"> ESFJ</label>
-        <input type="checkbox" id="ESFP" name="mbti" value="ESFP">
-            <label for="ESFP"> ESFP</label>
-        <input type="checkbox" id="ESTJ" name="mbti" value="ESTJ">
-            <label for="ESTJ"> ESTJ</label>
-        <input type="checkbox" id="ESTP" name="mbti" value="ESTP">
-            <label for="ESTP"> ESTP</label>
-        <input type="checkbox" id="INFJ" name="mbti" value="INFJ">
-            <label for="INFJ"> INFJ</label>
-        <input type="checkbox" id="INFP" name="mbti" value="INFP">
-            <label for="INFP"> INFP</label>
-        <input type="checkbox" id="INTJ" name="mbti" value="INTJ">
-            <label for="INTJ"> INTJ</label>
-        <input type="checkbox" id="INTP" name="mbti" value="INTP">
-            <label for="INTP"> INTP</label>
-        <input type="checkbox" id="ISFJ" name="mbti" value="ISFJ">
-            <label for="ISFJ"> ISFJ</label>
-        <input type="checkbox" id="ISFP" name="mbti" value="ISFP">
-            <label for="ISFP"> ISFP</label>
-        <input type="checkbox" id="ISTJ" name="mbti" value="ISTJ">
-            <label for="ISTJ"> ISTJ</label>
-        <input type="checkbox" id="ISTP" name="mbti`" value="ISTP">
-            <label for="ISTP"> ISTP</label>
-      
-        <br>  
+        <div id="mbti-options"></div>
       
         <p><u><font color="black">Favorite type of entertainment:</font></u></p>
 
-        <input type="checkbox" id="kpop" name="entertainment" value="kpop">
-            <label for="kpop"> Kpop</label>
-        <input type="checkbox" id="kdrama" name="entertainment" value="kdrama">
-            <label for="kdrama"> Kdrama</label>
-        <input type="checkbox" id="pop" name="entertainment" value="pop">
-            <label for="pop"> Pop</label>
-        <input type="checkbox" id="band" name="entertainment" value="band">
-            <label for="band"> Band</label>
-        <input type="checkbox" id="hiphop" name="entertainment" value="hiphop">
-            <label for="hiphop"> HipHop</label>
-        <input type="checkbox" id="movie" name="entertainment" value="movie">
-            <label for="movie"> Movie</label>
-        <input type="checkbox" id="anime" name="entertainment" value="anime">
-            <label for="anime"> Anime</label>
-        <input type="checkbox" id="netflix" name="entertainment" value="netflix">
-            <label for="netflix"> Netflix</label>
-        
-        <br> 
+        <div id="entertainment-options"></div>
 
         <p><u><font color="black">What is your personality type:</font></u></p>
 
-        <input type="checkbox" id="Introvert" name="personality" value="Introvert">
-            <label for="Introvert"> Introvert</label>
-        <input type="checkbox" id="Extrovert" name="personality" value="Extrovert">
-            <label for="Extrovert"> Extrovert</label>
-        <input type="checkbox" id="anime" name="personality" value="Organized">
-            <label for="Organized"> Organized</label>
-        <input type="checkbox" id="Spontaneous" name="personality" value="Spontaneous">
-            <label for="Spontaneous"> Spontaneous</label>
-        
-        <br> 
+        <div id="personality-options"></div>
         
         <p><u><font color="black">Games:</font></u></p>
 
-        <input type="checkbox" id="Fifa" name="Games" value="Fifa">
-            <label for="Fifa">Fifa</label>
-        <input type="checkbox" id="LOL" name="Games" value="LOL">
-            <label for="LOL">LOL</label> 
-        <input type="checkbox" id="PC" name="Games" value="PC">
-            <label for="PC">PC Games</label>
-        <input type="checkbox" id="Video" name="Games" value="Video">
-            <label for="Video">Video games</label>
-        <input type="checkbox" id="Playstation" name="Games" value="Playstation">
-            <label for="Playstation">Playstation</label>
+        <div id="game-options"></div>
     
-        <br> 
         <p><u><font color="black">Food and beverage:</font></u></p>
 
-        <input type="checkbox" id="Restaurant" name="food/beverage" value="Restaurant">
-            <label for="Restaurant">Famous Restaurant</label>
-        <input type="checkbox" id="Coffeshop" name="food/beverage" value="Coffeshop">
-            <label for="Coffeshop">Coffeshop</label> 
-        <input type="checkbox" id="Dessert" name="food/beverage" value="Dessert">
-            <label for="Dessert">Dessert</label>
-        <input type="checkbox" id="spriMeatng" name="food/beverage" value="Meat">
-            <label for="Meat">Meat</label>
-        <input type="checkbox" id="Chicken" name="food/beverage" value="Chicken">
-            <label for="Chicken">Chicken</label> 
-        <input type="checkbox" id="Vegan" name="food/beverage" value="Vegan">
-            <label for="Vegan">Vegan</label>
-        <input type="checkbox" id="Spicy" name="food/beverage" value="Spicy">
-            <label for="Spicy">Spicy</label>
-        <br>
+        <div id="food-options"></div>
         <br>
         
-        <input type="submit" value="Submit">
+        <input class="submit-button" type="submit" value="Submit">
       </form>
-    </head>
+      <script type="module" src="../scripts/generateCheckboxes.js"></script>
     <body>
-    
-    
-    
-</body>
 </html>

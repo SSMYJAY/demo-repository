@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Set a background color for the body */
+body {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  align-items: center;
+  /* padding-bottom: 200px; */
+  height: max-content;
+}
+
+.bg-text {
+  height: 70%;
+  width: 70%;
+}
+
+.bg-text h2 {
+  text-align: center;
+}
+
+/* Center the form */
+form {
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  height: max-content;
+  text-align: center;
+}
+
+form p {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 25px;
+}
+
+/* Style for the form headings */
+form h2 {
+  color: #842434;
+}
+
+/* Custom-styled labels */
+.custom-label {
+  display: inline-block;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.custom-label input[type="checkbox"] {
+  display: none; /* Hide the default checkbox input */
+}
+
+/* Style for the pillbox labels */
+.checkbox-text {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 2px solid #842434;
+  background-color: white;
+  color: #842434;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style for the pillbox labels when the checkbox is checked */
+.custom-label input[type="checkbox"]:checked + .checkbox-text {
+  background-color: #842434;
+  color: white;
+}
+
+/* Style for the submit button */
+.submit-button {
+  display: inline-block;
+  padding: 10px 20px; /* Adjust the padding as needed to control the button's size */
+  border: none;
+  border-radius: 10px; /* Adjust the border-radius to control the button's roundness */
+  background-color: #842434; /* Red background color */
+  color: white; /* White font color */
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; /* Hover effects */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow */
+
+  /* Additional styles for better button appearance */
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Hover effect for the submit button */
+.submit-button:hover {
+  background-color: #842434; /* Red background on hover */
+  color: white; /* White font color on hover */
+  transform: translateY(-2px); /* Move the button up by 2px on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Increase the drop shadow on hover */
+}
