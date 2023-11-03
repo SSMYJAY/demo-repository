@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+$text-color: #747373;
+$header-height: 60px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fbfefc;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  top: 0;
+  box-sizing: border-box;
+  background: #842434;
+  padding: 0 50px 0 50px;
+  height: $header-height;
+  z-index: 999;
+}
+
+.container-fluid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-title h1 {
+  font-size: 24px;
+  color: white;
+}
+
+.logout-button {
+  background: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: black;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Add a smooth transition effect */
+
+  text-decoration: none; /* Remove the underline */
+}
+
+/* Change the background color and add a stronger shadow on hover */
+.logout-button:hover {
+  background: #f0f0f0; /* Change to your desired hover background color */
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Enhance the shadow on hover */
+}
+
+a {
+  text-decoration: none;
+}
+
+menu {
+  width: 260px;
+  position: fixed;
+  padding: 0;
+  z-index: 10;
+  height: calc(100% - 100px);
+  overflow-y: auto;
+  background: rgba(214, 214, 212, 0.2);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+
+  top: 59px;
+  left: 50px;
+  margin: 0;
+  overflow-y: auto;
+}
+
+menu ul {
+  list-style: none;
+  clear: both;
+  float: unset;
+}
+
+menu > div {
+  padding: 10px;
+}
+
+#filter_text {
+  width: 100%;
+  margin: 0;
+}
+
+menu .admin-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+menu .admin-menu li:first-child {
+  border-top: 1px solid rgba(216, 175, 131, 0.6);
+}
+
+menu .admin-menu li {
+  clear: both;
+  display: block;
+  padding: 10px;
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: #842434;
+  border-bottom: 1px solid rgba(217, 177, 135, 0.6);
+}
+
+menu .user-profile {
+  width: 100%;
+  padding: 20px;
+  margin-top: 10px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+menu .profile-pic {
+  width: 80px;
+}
+
+menu .profile-pic img {
+  width: 80px;
+  height: 80px;
+  border-radius: 70%;
+  border: 2px solid #d8af83;
+}
+
+menu .user-info {
+  width: min-content;
+}
+
+menu .profile-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+menu .profile-menu li {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+menu .profile-menu a {
+  padding: 10px;
+  color: #8be5b1;
+}
+
+menu .profile-menu a:hover,
+menu .profile-menu a:active {
+  color: #d8af83;
+}
+
+menu .username {
+  font-size: 20px;
+  text-align: left;
+  color: #071b0e;
+  letter-spacing: 1px;
+}
+
+menu .filter-form {
+  padding: 10px;
+}
+
+main {
+  position: relative;
+  width: calc(100% - 400px);
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  padding: 20px;
+  margin-left: 310px;
+  margin-top: $header-height;
+  float: left;
+  padding-bottom: $header-height;
+  background: #fbfefc;
+}
+
+section {
+  padding: 20px;
+  margin: 60px 0;
+}
+
+.hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.hashtag {
+  background-color: white;
+  border: 2px solid #842434;
+  color: #842434;
+  padding: 5px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+#bioTextarea {
+  width: 50%; /* Use 100% width for a cleaner look */
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #842434; /* Red border color */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Adjust font size as needed */
+  color: #842434; /* Text color */
+}
+
+.bio-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.bio-button {
+  background-color: #842434;
+  color: white;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.bio-button:hover {
+  background-color: #a63c4c; /* Lighter red on hover for buttons */
+}
+
+.card-content {
+  background: #ffffff;
+  border: 4px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  z-index: 1;
+}
+
+.card-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-img span {
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  background: #2ecc71;
+  padding-left: 20px;
+  padding: 6px;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.card-img span h4 {
+  font-size: 13px;
+  margin: 0;
+  padding: 10px 5px;
+  line-height: 0;
+}
+
+.card-desc {
+  padding: 1.25rem;
+}
+
+.card-desc h3 {
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 1.3em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.card-desc p {
+  color: #747373;
+  font-size: 14px;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0px;
+  margin-bottom: 20px;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+.btn-card {
+  background-color: #2ecc71;
+  color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 0.84rem 2.14rem;
+  font-size: 0.81rem;
+}
+
+.btn-card:hover {
+  background: #1abc9c;
+}
+
+a.btn-card {
+  text-decoration: none;
+  color: #fff;
+}
