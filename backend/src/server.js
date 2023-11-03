@@ -6,6 +6,7 @@ const FileStore = require("session-file-store")(session);
 const https = require("https");
 const fs = require("fs");
 
+var auth = require("./utils/auth.js");
 var authCheck = require("./utils/authCheck.js");
 
 const app = express();
@@ -59,15 +60,19 @@ app.get("/main", (req, res) => {
   }
 
   // If the user is authenticated, it generates an HTML response.?
+  res.sendFile(path.resolve("../public/main.html"));
+});
+
+app.get("/question", (req, res) => {
+  // if not logged in, redirect to the login page
+
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect("/auth/login");
+    return false;
+  }
+
+  // If the user is authenticated, it generates an HTML response.?
   res.sendFile(path.resolve("../public/question.html"));
-  // var html = template.HTML(
-  //   "Welcome",
-  //   `<hr>
-  //       <h2>Welcome to Main page!</h2>
-  //       <p>Login Successful!</p>`,
-  //   authCheck.statusUI(req, res)
-  // );
-  // res.send(html);
 });
 
 https
