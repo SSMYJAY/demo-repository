@@ -1,7 +1,8 @@
 // validation.js
 
 function validateSignupData(data) {
-  const { username, email, major, year, password, confirmPassword } = data;
+  const { username, email, major, year, gender, password, confirmPassword } =
+    data;
   let isValid = true;
   let warningMessage = "";
 
@@ -19,6 +20,13 @@ function validateSignupData(data) {
   }
 
   // Major and Year validation (no specific format check)
+
+  // Gender validation
+  const validGenders = ["Male", "Female", "Other", "Prefer not to say"];
+  if (!validGenders.includes(gender)) {
+    warningMessage += "*Please select a valid gender. ";
+    isValid = false;
+  }
 
   // Password validation (at least 8 characters, 1 number, 1 special character, both uppercase and lowercase)
   if (password.length < 8) {
