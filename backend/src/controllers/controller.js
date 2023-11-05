@@ -18,18 +18,46 @@ exports.getConcat = (req, res) => {
   res.send(`Result: ${result}`);
 };
 
-exports.findOneUser = (req, res) => {
-  User.findById(req.params.user_id, (err, data) => {
+exports.findCurrentUser = (req, res) => {
+  User.findById(req.session.nickname, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found user with id ${req.params.user_id}.`,
+          message: `Not found user with id ${req.session.nickname}.`,
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving user with id " + req.params.user_id,
+          message: "Error retrieving user with id " + req.session.nickname,
         });
       }
-    } else res.send(data);
+    } else
+      res.send({
+        success: true,
+        username: data.id,
+        major: data.major,
+        year: data.year,
+        gender: data.gender,
+        bio: data.bio,
+      });
+  });
+};
+
+exports.updateBio = (req, res) => {
+  User.updateBio(req.session.nickname, req.body.bio, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found user with id ${req.session.nickname}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error updating bio of user " + req.session.nickname,
+        });
+      }
+    } else
+      res.send({
+        success: true,
+        bio: req.body.bio,
+      });
   });
 };
