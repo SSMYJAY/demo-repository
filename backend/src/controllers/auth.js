@@ -40,10 +40,11 @@ exports.processSignup = (req, res) => {
   if (!isValid) {
     return res.json({ success: false, message: warningMessage });
   } else {
-    const { username, email, major, year, password, confirmPassword } = data;
+    const { username, email, major, year, password, confirmPassword, gender } =
+      data;
     const password_e = bcrypt.hashSync(password, 10); // saltOrRounds: salt를 몇 번 돌릴건지.
     db.query(
-      "SELECT * FROM userTable WHERE id = ? OR email = ?;",
+      "SELECT * FROM usertable WHERE id = ? OR email = ?;",
       [username, email],
       function (error, results, fields) {
         // The results of the query are handled in a callback function.?
@@ -99,7 +100,7 @@ exports.processLogin = (req, res) => {
   } else {
     const { username, password } = data;
     db.query(
-      "SELECT id, password FROM userTable WHERE id = ?",
+      "SELECT id, password FROM usertable WHERE id = ?",
       [username],
       function (error, results, fields) {
         //
