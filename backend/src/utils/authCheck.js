@@ -3,6 +3,11 @@ module.exports = {
     if (request.session.is_logined) {
       return true;
     } else {
+      response.cookie("jwt", "", {
+        expires: new Date(0),
+        secure: process.env.NODE_ENV !== "development",
+        httpOnly: false,
+      });
       return false;
     }
   },
