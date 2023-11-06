@@ -44,8 +44,8 @@ exports.processSignup = (req, res) => {
       data;
     const password_e = bcrypt.hashSync(password, 10); // saltOrRounds: salt를 몇 번 돌릴건지.
     db.query(
-      "SELECT * FROM usertable WHERE id = ? OR email = ?;",
-      [username, email],
+      "SELECT * FROM user WHERE email = ?;",
+      [email],
       function (error, results, fields) {
         // The results of the query are handled in a callback function.?
         //
@@ -59,9 +59,12 @@ exports.processSignup = (req, res) => {
         // if there is no same ID in DB, and Pw is same with PW2
 
         if (results.length <= 0 && password == confirmPassword) {
+          const currentDate = new Date();
+          const formattedDate = currentDate.toISOString().split("T")[0]; // Get the date portion
+
           db.query(
-            "INSERT INTO usertable (id, password, email, major, year, gender) VALUES(?,?,?,?,?,?)",
-            [username, password_e, email, major, year, gender],
+            "INSERT INTO user (username, password, email, major, year, gender, registration_date) VALUES(?,?,?,?,?,?,?)",
+            [username, password_e, email, major, year, gender, formattedDate],
             function (error, data) {
               if (error) throw error;
               return res.json({
@@ -71,11 +74,11 @@ exports.processSignup = (req, res) => {
             }
           );
         }
-        // if entered ID already exists in DB
+        // if entered email already exists in DB
         else {
           return res.json({
             success: false,
-            message: "Username or email already exists!",
+            message: "Email has already been registered!",
           });
         }
       }
@@ -98,10 +101,10 @@ exports.processLogin = (req, res) => {
   if (!isValid) {
     return res.json({ success: false, message: warningMessage });
   } else {
-    const { username, password } = data;
+    const { email, password } = data;
     db.query(
-      "SELECT id, password FROM usertable WHERE id = ?",
-      [username],
+      "SELECT user_id, email, password FROM user WHERE email = ?",
+      [email],
       function (error, results, fields) {
         //
 
@@ -120,9 +123,10 @@ exports.processLogin = (req, res) => {
           // if entered PW is correct, update session information
 
           if (issame) {
-            const token = generateAccessToken({ username: username });
+            console.log(results);
+            const token = generateAccessToken({ username: results[0].user_id });
             req.session.is_logined = true;
-            req.session.nickname = username;
+            req.session.nickname = results[0].user_id;
             res.cookie("jwt", "", {
               expires: new Date(0),
               secure: process.env.NODE_ENV !== "development",
@@ -145,16 +149,16 @@ exports.processLogin = (req, res) => {
           else {
             res.json({
               success: false,
-              message: "Username and password does not match!",
+              message: "Email and password does not match!",
             });
           }
         }
 
-        // if entered ID does not exist in DB
+        // if entered email does not exist in DB
         else {
           res.json({
             success: false,
-            message: "Username and password does not match!",
+            message: "Email and password does not match!",
           });
         }
       }
