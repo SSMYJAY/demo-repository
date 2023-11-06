@@ -1,13 +1,14 @@
 // validation.js
 
 function validateLoginData(data) {
-  const { username, password } = data;
+  const { email, password } = data;
   let isValid = true;
   let warningMessage = "";
 
   // Username validation (only letters and numbers, at least 3 characters)
-  if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
-    warningMessage += "*Username or password does not match";
+  // Email validation (simple check for the presence of "@" symbol)
+  if (!/@/.test(email)) {
+    warningMessage += "*Please enter a valid email address. ";
     isValid = false;
   }
 
