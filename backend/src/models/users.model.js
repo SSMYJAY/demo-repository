@@ -3,7 +3,7 @@ const db = require("./db.js");
 const User = function (database) {};
 
 User.findById = (user_id, result) => {
-  db.query("SELECT * FROM usertable WHERE id = ?", [user_id], (err, res) => {
+  db.query("SELECT * FROM user WHERE user_id = ?", [user_id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -15,15 +15,12 @@ User.findById = (user_id, result) => {
       result(null, res[0]);
       return;
     }
-
-    // not found user with the id
-    result({ kind: "not_found" }, null);
   });
 };
 
 User.updateBio = (user_id, bio, result) => {
   db.query(
-    "UPDATE usertable SET bio = ? WHERE id = ?",
+    "UPDATE user SET bio = ? WHERE user_id = ?",
     [bio, user_id],
     (err, res) => {
       console.log(res);
