@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/profile-style.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <header class="fixed-header" role="banner">
+      <div class="container-fluid">
+        <!-- Site Title  -->
+        <div class="site-title col-xs-3">
+          <a href="/"><h1>KU Friend Matcher</h1></a>
+        </div>
+        <a href="/auth/logout"><div class="logout-button">Log out</div></a>
+      </div>
+    </header>
+
+    <menu id="user" class="dynamicMenu">
+      <div class="user-profile">
+        <div class="profile-pic">
+          <img
+            src="https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
+            alt="username here"
+          />
+        </div>
+
+        <div class="user-info">
+          <div class="username">
+            <p><strong></strong></p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="admin-menu">
+        <li class="gender"></li>
+        <li class="major"></li>
+        <li class="year"></li>
+        <li class="registration_date"></li>
+      </ul>
+      <div class="add-button-wrapper">
+        <button class="add-friend-button">Add as friend</button>
+      </div>
+      <div class="remove-button-wrapper">
+        <button class="remove-friend-button">Remove as friend</button>
+      </div>
+    </menu>
+
+    <main>
+      <section>
+        <h2>Bio</h2>
+        <p class="bio"></p>
+
+        <h2>Hashtags</h2>
+
+        <div class="hashtags">
+          <!-- Add more hashtags as needed -->
+        </div>
+      </section>
+    </main>
+    <script type="module" src="../scripts/getCookie.js"></script>
+    <script type="module" src="../scripts/profile.js"></script>
+    <script type="module" src="../scripts/addRemoveFriendProfile.js"></script>
+  </body>
+</html>
