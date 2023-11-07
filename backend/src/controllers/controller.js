@@ -1,25 +1,10 @@
 const { validationResult } = require("express-validator");
 const dotenv = require("dotenv");
-const concat = require("../lib/concat/build/Release/concat");
 const User = require("../models/users.model");
 const UserHashtag = require("../models/userhashtag.model");
 const Friends = require("../models/friends.model");
 
 dotenv.config();
-
-exports.getTest = (req, res) => {
-  const value = req.params.value;
-
-  const result = value;
-  res.send(`Result: ${result}`);
-};
-
-exports.getConcat = (req, res) => {
-  const value = req.params.value;
-
-  const result = concat.world(value);
-  res.send(`Result: ${result}`);
-};
 
 exports.findCurrentUser = (req, res) => {
   User.findById(req.session.nickname, (err, data) => {

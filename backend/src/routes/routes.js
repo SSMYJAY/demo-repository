@@ -8,9 +8,6 @@ module.exports = (app) => {
 
   var router = require("express").Router();
 
-  router.get("/test/:value", basic.getTest);
-  router.get("/world/:value", basic.getConcat);
-
   // Protected routes
   // get info of current user
   router.get("/user", authCheckNext.isOwner, auth, basic.findCurrentUser);
