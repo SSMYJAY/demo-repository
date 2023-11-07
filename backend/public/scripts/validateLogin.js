@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       !/(?=.*[0-9])(?=.*[!@#\$%^&*])(?=.*[a-z])(?=.*[A-Z])/.test(password)
     ) {
       if (isValid) {
-        warningMessage += "*Username or password does not match";
+        warningMessage += "*Email or password does not match";
         isValid = false;
       }
     }
