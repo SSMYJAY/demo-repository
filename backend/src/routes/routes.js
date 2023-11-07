@@ -25,8 +25,8 @@ module.exports = (app) => {
   // update bio of current user
   router.post(
     "/user/bio",
-    auth,
     authCheckNext.isOwner,
+    auth,
     check("bio").notEmpty().isString().escape(),
     basic.updateBio
   );
