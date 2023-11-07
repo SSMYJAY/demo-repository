@@ -1,26 +1,15 @@
 import { getCookie } from "./getCookie.js";
 import { category_noseparate } from "./category_noseparate.js";
 
+function getTagsFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("user_id");
+}
+
 function decodeHtmlEntities(text) {
   const textarea = document.createElement("textarea");
   textarea.innerHTML = text;
   return textarea.value;
-}
-
-function createUserCard(user) {
-  const card = document.createElement("div");
-  card.className = "user-card";
-  card.innerHTML = `
-          <a href="/profile?user_id=${user.user_id}"  style="color: black;"><img src="https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg" alt="${user.username}">
-          <h2>${user.username}</h2></a>
-          <p><strong>Major:</strong> ${user.major}</p>
-          <p><strong>Year:</strong> ${user.year}</p>
-          <p><strong>Gender:</strong> ${user.gender}</p>
-          <div class="hashtag-list class${user.user_id}">
-          </div>
-          <button class="remove-friend-button">Remove Friend</button>
-      `;
-  return card;
 }
 
 const userCardsContainer = document.querySelector(".friends");
@@ -36,7 +25,9 @@ window.addEventListener("load", () => {
       "Content-Type": "application/json",
     });
 
-    fetch("/api/user", {
+    const user_id = getTagsFromURL();
+
+    fetch(`/api/friend?user_id=${user_id}`, {
       method: "GET",
       headers,
     })
@@ -53,7 +44,7 @@ window.addEventListener("load", () => {
 
         usernameElement.innerHTML = `<strong>${userData.username}</strong>`;
         bioElement.textContent =
-          decodeHtmlEntities(userData.bio) || "Your bio is empty!";
+          decodeHtmlEntities(userData.bio) || "Bio is empty!";
         genderElement.textContent = userData.gender;
         yearElement.textContent = userData.year;
         majorElement.textContent = userData.major;
@@ -65,7 +56,7 @@ window.addEventListener("load", () => {
         console.error("Error fetching user data:", error);
       });
 
-    fetch("/api/user/hashtag", {
+    fetch(`/api/friend/hashtag?user_id=${user_id}`, {
       method: "GET",
       headers,
     })
@@ -92,45 +83,22 @@ window.addEventListener("load", () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
-        const friendsData = data.data;
-        for (const friendData of friendsData) {
-          const userCard = createUserCard(friendData);
-          userCardsContainer.appendChild(userCard);
-          const removeFriendButton = userCard.querySelector(
+        const friendsList = data?.data;
+        const isFriendOfUser = friendsList?.some(
+          (friend) => friend.user_id == user_id
+        );
+        if (!isFriendOfUser) {
+          const addFriendButton = document.querySelector(".add-friend-button");
+          addFriendButton.style.display = "block";
+        } else {
+          const removeFriendButton = document.querySelector(
             ".remove-friend-button"
           );
-          removeFriendButton.addEventListener("click", () => {
-            // Make a POST fetch request with user_id as the request body
-            if (
-              window.confirm(
-                `Are you sure you want to remove ${friendData.username} from your friends list?`
-              )
-            ) {
-              const user_id = friendData.user_id;
-              fetch(`/api/friends`, {
-                method: "DELETE",
-                headers,
-                body: JSON.stringify({ friend_user_id: user_id }),
-              })
-                .then((response) => response.json())
-                .then((result) => {
-                  if (window.confirm("Friend removed!")) {
-                    location.reload();
-                  } else {
-                    location.reload();
-                  }
-
-                  // You can add additional logic here, like showing a confirmation message.
-                })
-                .catch((error) => {
-                  console.error("Error removing friend:", error);
-                });
-            }
-          });
+          removeFriendButton.style.display = "block";
         }
       })
       .catch((error) => {
-        console.error("Error fetching hashtag data:", error);
+        console.error("Error getting friends: ", error);
       });
   } else {
     console.error("JWT token not found in cookie");

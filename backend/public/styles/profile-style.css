@@ -214,9 +214,8 @@ section {
 }
 
 #bioTextarea {
-  width: 100%; /* Use 100% width for a cleaner look */
+  width: 50%; /* Use 100% width for a cleaner look */
   margin-bottom: 20px;
-  height: 120px;
   padding: 10px;
   border: 2px solid #842434; /* Red border color */
   border-radius: 8px; /* Rounded corners */
@@ -358,17 +357,31 @@ a {
   margin: 10px 0;
 }
 
+.add-button-wrapper,
+.remove-button-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+.add-friend-button,
 .remove-friend-button {
   background-color: #842434;
+  display: none;
   color: #fff;
   border: none;
-  padding: 8px 12px;
+  font-size: 14px;
+  padding: 12px 24px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s;
 }
 
+.add-friend-button:hover,
 .remove-friend-button:hover {
   background-color: #741424;
 }

@@ -75,6 +75,42 @@ app.get("/question", (req, res) => {
   res.sendFile(path.resolve("../public/question.html"));
 });
 
+app.get("/friends-hashtag", (req, res) => {
+  // if not logged in, redirect to the login page
+
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect("/auth/login");
+    return false;
+  }
+
+  // If the user is authenticated, it generates an HTML response.?
+  res.sendFile(path.resolve("../public/friends-hashtag.html"));
+});
+
+app.get("/friends", (req, res) => {
+  // if not logged in, redirect to the login page
+
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect("/auth/login");
+    return false;
+  }
+
+  // If the user is authenticated, it generates an HTML response.?
+  res.sendFile(path.resolve("../public/friends.html"));
+});
+
+app.get("/profile", (req, res) => {
+  // if not logged in, redirect to the login page
+
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect("/auth/login");
+    return false;
+  }
+
+  // If the user is authenticated, it generates an HTML response.?
+  res.sendFile(path.resolve("../public/profile.html"));
+});
+
 https
   .createServer(
     {
