@@ -23,8 +23,8 @@ module.exports = (app) => {
 
   router.post(
     "/login_process",
-    check("email").notEmpty().isEmail().normalizeEmail(),
-    check("password").notEmpty().escape(),
+    check("email").notEmpty(),
+    check("password").notEmpty(),
     auth.processLogin
   );
 
