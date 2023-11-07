@@ -23,14 +23,14 @@ module.exports = (app) => {
 
   router.post(
     "/login_process",
-    check("username").notEmpty().isLength({ min: 3 }).trim().escape(),
+    check("email").notEmpty().isEmail().normalizeEmail(),
     check("password").notEmpty().escape(),
     auth.processLogin
   );
 
   router.post(
     "/signup_process",
-    check("username").notEmpty().isLength({ min: 3 }).trim().escape(),
+    check("username").notEmpty().isLength({ min: 3, max: 20 }).trim().escape(),
     check("email").notEmpty().isEmail().normalizeEmail(),
     check("year").notEmpty().isNumeric().trim().escape(),
     check("major").notEmpty().trim().escape(),

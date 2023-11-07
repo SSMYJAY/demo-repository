@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let isValid = true;
     let warningMessage = "";
 
-    const username = document.querySelector("#user").value;
+    const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
 
-    // Username validation (only letters and numbers, at least 3 characters)
-    if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
-      warningMessage += "*Username or password does not match";
+    // Email validation (simple check for the presence of "@" symbol)
+    if (!/@/.test(email)) {
+      warningMessage += "*Please enter a valid email address. ";
       isValid = false;
     }
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       warningText.innerText = warningMessage;
     } else {
       const formData = {
-        username,
+        email,
         password,
       };
       fetch("/auth/login_process", {

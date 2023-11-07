@@ -1,152 +1,40 @@
-const mbtiOptions = [
-  "ISTJ",
-  "ISFJ",
-  "INFJ",
-  "INTJ",
-  "ISTP",
-  "ISFP",
-  "INFP",
-  "INTP",
-  "ESTP",
-  "ESFP",
-  "ENFP",
-  "ENTP",
-  "ESTJ",
-  "ESFJ",
-  "ENFJ",
-  "ENTJ",
-];
+import { category } from "./category.js";
 
-const entertainmentOptions = [
-  "Kpop",
-  "Kdrama",
-  "Pop",
-  "Band",
-  "Hip-hop",
-  "Movie",
-  "Anime",
-  "Netflix",
-];
+function createCheckboxes(category, categoryOptions, containerId) {
+  const categoryContainer = document.getElementById(containerId);
 
-const personalityOptions = [
-  "Introvert",
-  "Extrovert",
-  "Organized",
-  "Spontaneous",
-];
+  const keys = Object.keys(categoryOptions); // Get an array of keys
 
-const gameOptions = ["Fifa", "LOL", "PC Games", "Video Games", "Playstation"];
+  for (const key of keys) {
+    const label = document.createElement("label");
+    label.className = "custom-label";
 
-const foodOptions = [
-  "Famous Restaurant",
-  "Coffee shop",
-  "Dessert",
-  "Meat",
-  "Chicken",
-  "Vegan",
-  "Spicy",
-];
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = category;
+    checkbox.value = key; // Set the value to the key
 
-const mbtiOptionsContainer = document.getElementById("mbti-options");
+    const checkboxText = document.createElement("span");
+    checkboxText.className = "checkbox-text";
+    checkboxText.textContent = "#" + categoryOptions[key]; // Use the key to access the option
 
-mbtiOptions.forEach((option) => {
-  const label = document.createElement("label");
-  label.className = "custom-label";
+    label.appendChild(checkbox);
+    label.appendChild(checkboxText);
+    categoryContainer.appendChild(label);
+  }
+}
 
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "mbti";
-  checkbox.value = option;
-
-  const checkboxText = document.createElement("span");
-  checkboxText.className = "checkbox-text";
-  checkboxText.textContent = option;
-
-  label.appendChild(checkbox);
-  label.appendChild(checkboxText);
-  mbtiOptionsContainer.appendChild(label);
-});
-
-const entertainmentOptionsContainer = document.getElementById(
+createCheckboxes("personality", category.personality, "personality-options");
+createCheckboxes("mbti", category.mbti, "mbti-options");
+createCheckboxes(
+  "entertainment",
+  category.entertainment,
   "entertainment-options"
 );
-
-entertainmentOptions.forEach((option) => {
-  const label = document.createElement("label");
-  label.className = "custom-label";
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "entertainment";
-  checkbox.value = option;
-
-  const checkboxText = document.createElement("span");
-  checkboxText.className = "checkbox-text";
-  checkboxText.textContent = option;
-
-  label.appendChild(checkbox);
-  label.appendChild(checkboxText);
-  entertainmentOptionsContainer.appendChild(label);
-});
-
-const personalityOptionsContainer = document.getElementById(
-  "personality-options"
-);
-
-personalityOptions.forEach((option) => {
-  const label = document.createElement("label");
-  label.className = "custom-label";
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "personality";
-  checkbox.value = option;
-
-  const checkboxText = document.createElement("span");
-  checkboxText.className = "checkbox-text";
-  checkboxText.textContent = option;
-
-  label.appendChild(checkbox);
-  label.appendChild(checkboxText);
-  personalityOptionsContainer.appendChild(label);
-});
-
-const gameOptionsContainer = document.getElementById("game-options");
-
-gameOptions.forEach((option) => {
-  const label = document.createElement("label");
-  label.className = "custom-label";
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "game";
-  checkbox.value = option;
-
-  const checkboxText = document.createElement("span");
-  checkboxText.className = "checkbox-text";
-  checkboxText.textContent = option;
-
-  label.appendChild(checkbox);
-  label.appendChild(checkboxText);
-  gameOptionsContainer.appendChild(label);
-});
-
-const foodOptionsContainer = document.getElementById("food-options");
-
-foodOptions.forEach((option) => {
-  const label = document.createElement("label");
-  label.className = "custom-label";
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.name = "food";
-  checkbox.value = option;
-
-  const checkboxText = document.createElement("span");
-  checkboxText.className = "checkbox-text";
-  checkboxText.textContent = option;
-
-  label.appendChild(checkbox);
-  label.appendChild(checkboxText);
-  foodOptionsContainer.appendChild(label);
-});
+createCheckboxes("game", category.game, "game-options");
+createCheckboxes("food", category["food&beverage"], "food-options");
+createCheckboxes("drink", category["drink&party"], "drink-options");
+createCheckboxes("sports", category["sports"], "sports-options");
+createCheckboxes("hobby", category["hobby"], "hobby-options");
+createCheckboxes("journey", category["journey"], "journey-options");
+createCheckboxes("others", category["others"], "others-options");

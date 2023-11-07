@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/main-style.css" />
-    <title>My Profile</title>
+    <link rel="stylesheet" href="../css/profile-style.css" />
+    <title>Profile</title>
   </head>
   <body>
     <header class="fixed-header" role="banner">
       <div class="container-fluid">
         <!-- Site Title  -->
         <div class="site-title col-xs-3">
-          <h1>My Profile</h1>
+          <a href="/"><h1>KU Friend Matcher</h1></a>
         </div>
         <a href="/auth/logout"><div class="logout-button">Log out</div></a>
       </div>
@@ -39,41 +39,28 @@
         <li class="year"></li>
         <li class="registration_date"></li>
       </ul>
+      <div class="add-button-wrapper">
+        <button class="add-friend-button">Add as friend</button>
+      </div>
+      <div class="remove-button-wrapper">
+        <button class="remove-friend-button">Remove as friend</button>
+      </div>
     </menu>
 
     <main>
       <section>
         <h2>Bio</h2>
         <p class="bio"></p>
-        <textarea id="bioTextarea" style="display: none"></textarea>
-        <button class="bio-button" id="editBioButton">Edit</button>
-        <div class="bio-button-wrapper">
-          <button class="bio-button" id="saveBioButton" style="display: none">
-            Save
-          </button>
-          <button class="bio-button" id="backBioButton" style="display: none">
-            Back
-          </button>
-        </div>
 
         <h2>Hashtags</h2>
 
         <div class="hashtags">
           <!-- Add more hashtags as needed -->
         </div>
-        <a href="/question"
-          ><button class="bio-button">Edit hashtags</button></a
-        >
-
-        <h2>Friends</h2>
-        <div class="friends"></div>
-        <a href="/friends-hashtag"
-          ><button class="bio-button">Find friends!</button></a
-        >
       </section>
     </main>
     <script type="module" src="../scripts/getCookie.js"></script>
-    <script type="module" src="../scripts/main.js"></script>
-    <script type="module" src="../scripts/editBio.js"></script>
+    <script type="module" src="../scripts/profile.js"></script>
+    <script type="module" src="../scripts/addRemoveFriendProfile.js"></script>
   </body>
 </html>

@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
       gender = genderLabels[selectedGender];
     }
 
-    // Username validation (only letters and numbers, at least 3 characters)
-    if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
+    // Username validation (only letters and numbers, 3 to 20 characters)
+    if (!/^[a-zA-Z0-9 ]{3,20}$/.test(username)) {
       warningMessage +=
-        "*Username must contain at least 3 alphanumeric characters. ";
+        "*Username must contain between 3 and 20 alphanumeric characters. ";
       isValid = false;
     }
 
