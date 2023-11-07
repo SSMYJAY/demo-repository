@@ -3,14 +3,14 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
 const FileStore = require("session-file-store")(session);
-const https = require("https");
+const http = require("http"); // Change to http module
 const fs = require("fs");
 
 var auth = require("./utils/auth.js");
 var authCheck = require("./utils/authCheck.js");
 
 const app = express();
-const port = 443;
+const port = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(
@@ -111,15 +111,6 @@ app.get("/profile", (req, res) => {
   res.sendFile(path.resolve("../public/profile.html"));
 });
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync("./key.pem"),
-      cert: fs.readFileSync("./cert.pem"),
-      passphrase: "krkr13",
-    },
-    app
-  )
-  .listen(port, () => {
-    console.log(`app listening at https://localhost:${port}`);
-  });
+http.createServer(app).listen(port, () => {
+  console.log(`app listening at http://localhost:${port}`);
+});
