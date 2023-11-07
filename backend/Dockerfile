@@ -5,15 +5,12 @@ FROM ubuntu:16.04
 ENV NODE_ENV=production
 
 # Update the package manager and install necessary packages
-RUN apt-get update && \
-    apt-get install -y git docker.io docker-compose gcc make g++ && \
-    apt-get install -y curl && \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-    echo "deb https://deb.nodesource.com/node_14.x $(lsb_release -sc) main" > /etc/apt/sources.list.d/nodesource.list && \
-    echo "deb-src https://deb.nodesource.com/node_14.x $(lsb_release -sc) main" >> /etc/apt/sources.list.d/nodesource.list && \
-    apt-get update && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y
+RUN apt-get install -y nginx git mysql-server build-essential g++ curl
+
+# Install nodejs(node.js 14)
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
 
 # Configure MySQL
 ENV MYSQL_ROOT_PASSWORD=my-secret-pw
@@ -31,20 +28,11 @@ RUN npm install --production --silent
 # Copy the application code into the container
 RUN git clone 'https://github.com/SSMYJAY/demo-repository.git'
 
-# Expose the port your application listens on
-EXPOSE 3000
-
-# Optionally, change ownership of the working directory to a non-root user
-# RUN chown -R node /usr/src/app
-
-# Optionally, switch to a non-root user for running the application
-# USER node
-
-# Command to start your Node.js application
-CMD ["node", "index.js"]
-
 # Create an SQL initialization script
 RUN echo "CREATE TABLE IF NOT EXISTS mytable (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);" > init.sql
 
-# Start MySQL and run your application
-CMD service mysql start && your-application-start-command
+# Expose the port your application listens on: 3010 (C/C++), 80 (Web server), 3306 (MySQL), 3000 (Node.js)
+EXPOSE 3010 80 3306 3000
+
+# Command to start your Node.js application and MySQL
+CMD service mysql start && node index.js
