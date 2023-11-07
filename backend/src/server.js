@@ -10,7 +10,7 @@ var auth = require("./utils/auth.js");
 var authCheck = require("./utils/authCheck.js");
 
 const app = express();
-const port = 3000;
+const port = 443;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(
