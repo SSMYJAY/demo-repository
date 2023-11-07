@@ -6,6 +6,7 @@ ENV NODE_ENV=production
 
 # Update the package manager and install necessary packages
 RUN apt-get update && \
+    apt-get install -y git docker.io docker-compose gcc make g++ && \
     apt-get install -y curl && \
     curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
     echo "deb https://deb.nodesource.com/node_14.x $(lsb_release -sc) main" > /etc/apt/sources.list.d/nodesource.list && \
@@ -13,6 +14,10 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
+
+# Configure MySQL
+ENV MYSQL_ROOT_PASSWORD=my-secret-pw
+ENV MYSQL_DATABASE=mydb
 
 # Create the working directory
 WORKDIR /usr/src/app    
@@ -24,7 +29,7 @@ COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install --production --silent
 
 # Copy the application code into the container
-COPY . .
+RUN git clone 'https://github.com/SSMYJAY/demo-repository.git'
 
 # Expose the port your application listens on
 EXPOSE 3000
@@ -38,3 +43,8 @@ EXPOSE 3000
 # Command to start your Node.js application
 CMD ["node", "index.js"]
 
+# Create an SQL initialization script
+RUN echo "CREATE TABLE IF NOT EXISTS mytable (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255) NOT NULL);" > init.sql
+
+# Start MySQL and run your application
+CMD service mysql start && your-application-start-command
