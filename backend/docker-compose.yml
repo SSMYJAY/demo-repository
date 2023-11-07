@@ -1,12 +1,19 @@
-version: '3.4'
-
+version: '3'
 services:
-  servertest:
-    image: servertest
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+  web:
+    image: node:14
+    working_dir: /usr/src/app
     environment:
       NODE_ENV: production
     ports:
-      - 3000:3000
+      - "3000:3000"
+    command: npm start
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: mydb
