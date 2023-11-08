@@ -1,4 +1,7 @@
 // validation.js
+const usernameValidator = require("../lib/usernameValidator/usernameValidator");
+const genderValidator = require("../lib/genderValidator/genderValidator");
+const majorValidator = require("../lib/majorValidator/majorValidator");
 
 function validateSignupData(data) {
   const { username, email, major, year, gender, password, confirmPassword } =
@@ -6,8 +9,7 @@ function validateSignupData(data) {
   let isValid = true;
   let warningMessage = "";
 
-  // Username validation (only letters and numbers, 3 to 20 characters)
-  if (!/^[a-zA-Z0-9 ]{3,20}$/.test(username)) {
+  if (!usernameValidator.validate(username)) {
     warningMessage +=
       "*Username must contain between 3 and 20 alphanumeric characters. ";
     isValid = false;
@@ -15,17 +17,25 @@ function validateSignupData(data) {
 
   // Email validation (simple check for the presence of "@" symbol)
   if (!/@/.test(email)) {
-    warningMessage += "*Please enter a valid email address. ";
-    isValid = false;
+    if (isValid) {
+      warningMessage += "*Please enter a valid email address. ";
+      isValid = false;
+    }
   }
 
-  // Major and Year validation (no specific format check)
+  if (!majorValidator.validate(major)) {
+    if (isValid) {
+      warningMessage +=
+        "*Please enter only alphabet characters for your major. ";
+      isValid = false;
+    }
+  }
 
-  // Gender validation
-  const validGenders = ["Male", "Female", "Other", "Prefer not to say"];
-  if (!validGenders.includes(gender)) {
-    warningMessage += "*Please select a valid gender. ";
-    isValid = false;
+  if (!genderValidator.validate(gender)) {
+    if (isValid) {
+      warningMessage += "*Please select a valid gender. ";
+      isValid = false;
+    }
   }
 
   // Password validation (at least 8 characters, 1 number, 1 special character, both uppercase and lowercase)

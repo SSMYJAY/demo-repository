@@ -1,6 +1,6 @@
 // validation.js
-const emailValidator = require("../lib/emailValidator/build/Release/emailValidator");
-const passwordValidator = require("../lib/passwordValidator/build/Release/passwordValidator");
+const emailValidator = require("../lib/emailValidator/emailValidator");
+const passwordValidator = require("../lib/passwordValidator/passwordValidator");
 
 function validateLoginData(data) {
   const { email, password } = data;

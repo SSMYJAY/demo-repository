@@ -1,1 +1,2 @@
-export const emailValidator = require("bindings")("emailValidator.node");
+const emailValidator = require("bindings")("emailValidator.node");
+module.exports = emailValidator;
