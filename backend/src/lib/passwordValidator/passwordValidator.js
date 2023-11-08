@@ -1,1 +1,2 @@
-export const passwordValidator = require("bindings")("passwordValidator.node");
+const passwordValidator = require("bindings")("passwordValidator.node");
+module.exports = passwordValidator;

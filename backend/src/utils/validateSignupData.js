@@ -1,7 +1,7 @@
 // validation.js
-const usernameValidator = require("../lib/usernameValidator/build/Release/usernameValidator");
-const genderValidator = require("../lib/genderValidator/build/Release/genderValidator");
-const majorValidator = require("../lib/majorValidator/build/Release/majorValidator");
+const usernameValidator = require("../lib/usernameValidator/usernameValidator");
+const genderValidator = require("../lib/genderValidator/genderValidator");
+const majorValidator = require("../lib/majorValidator/majorValidator");
 
 function validateSignupData(data) {
   const { username, email, major, year, gender, password, confirmPassword } =

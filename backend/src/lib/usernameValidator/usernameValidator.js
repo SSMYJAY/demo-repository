@@ -1,1 +1,2 @@
-export const usernameValidator = require("bindings")("usernameValidator.node");
+const usernameValidator = require("bindings")("usernameValidator.node");
+module.exports = usernameValidator;
