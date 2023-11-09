@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
       "Content-Type": "application/json",
     });
 
-    let initFriendsList = {};
+    let initFriendsList = [];
 
     fetch("/api/friends", {
       method: "GET",
@@ -61,20 +61,9 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
-        initFriendsList = data?.data;
-        // const isFriendOfUser = friendsList?.some(
-        //   (friend) => friend.user_id == user_id
-        // );
-        // if (!isFriendOfUser) {
-        //   const addFriendButton = document.querySelector(".add-friend-button");
-        //   addFriendButton.style.display = "block";
-        // } else {
-        //   const removeFriendButton = document.querySelector(
-        //     ".remove-friend-button"
-        //   );
-        //   removeFriendButton.style.display = "block";
-        // }
+        if (data?.data) {
+          initFriendsList = data?.data;
+        }
       })
       .catch((error) => {
         console.error("Error getting friends: ", error);
@@ -87,7 +76,6 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Friends with common tags:", data);
         const friendlist = data.data;
         friendlist.sort((a, b) => b.common - a.common);
 
