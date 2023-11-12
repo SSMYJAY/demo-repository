@@ -123,7 +123,6 @@ exports.processLogin = (req, res) => {
           // if entered PW is correct, update session information
 
           if (issame) {
-            console.log(results);
             const token = generateAccessToken({ username: results[0].user_id });
             req.session.is_logined = true;
             req.session.nickname = results[0].user_id;
