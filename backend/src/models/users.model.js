@@ -5,13 +5,13 @@ const User = function (database) {};
 User.findById = (user_id, result) => {
   db.query("SELECT * FROM user WHERE user_id = ?", [user_id], (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      // console.log("error: ", err);
       result(err, null);
       return;
     }
 
     if (res.length) {
-      console.log("found user: ", res[0]);
+      // console.log("found user: ", res[0]);
       result(null, res[0]);
       return;
     }
@@ -23,15 +23,14 @@ User.updateBio = (user_id, bio, result) => {
     "UPDATE user SET bio = ? WHERE user_id = ?",
     [bio, user_id],
     (err, res) => {
-      console.log(res);
       if (err) {
-        console.log("error: ", err);
+        // console.log("error: ", err);
         result(err, null);
         return;
       }
 
       if (res.info) {
-        console.log("updated bio: ", res);
+        // console.log("updated bio: ", res);
         result(null, res);
         return;
       }

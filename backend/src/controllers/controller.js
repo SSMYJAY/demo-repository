@@ -156,7 +156,6 @@ exports.updateUserHashtag = async (req, res) => {
 
   // Function to delete hashtags
   const deleteHashtags = (selectedTag) => {
-    console.log(selectedTag);
     return new Promise((resolve, reject) => {
       UserHashtag.deleteHashtag(
         req.session.nickname,
@@ -211,7 +210,6 @@ exports.updateUserHashtag = async (req, res) => {
     for (const selectedTag of selectedTags) {
       await insertHashtags(selectedTag);
     }
-    console.log("success!");
     res.send({
       success: true,
     });

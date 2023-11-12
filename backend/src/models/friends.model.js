@@ -8,13 +8,13 @@ Friends.getUserFriends = (user_id, result) => {
     [user_id],
     (err, res) => {
       if (err) {
-        console.log("error: ", err);
+        // console.log("error: ", err);
         result(err, null);
         return;
       }
 
       if (res.length) {
-        console.log("found friends: ", res);
+        // console.log("found friends: ", res);
         result(null, res);
         return;
       } else {
@@ -30,11 +30,11 @@ Friends.insertFriend = (user_id, friend_user_id, result) => {
     [user_id, friend_user_id],
     (err, res) => {
       if (err) {
-        console.log("error: ", err);
+        // console.log("error: ", err);
         result(err, null);
         return;
       } else {
-        console.log("rows inserted");
+        // console.log("rows inserted");
         result(null, null);
         return;
       }
@@ -48,11 +48,11 @@ Friends.deleteFriend = (user_id, friend_user_id, result) => {
     [user_id, friend_user_id],
     (err, res) => {
       if (err) {
-        console.log("error: ", err);
+        // console.log("error: ", err);
         result(err, null);
         return;
       } else {
-        console.log("rows deleted");
+        // console.log("rows deleted");
         result(null, null);
         return;
       }

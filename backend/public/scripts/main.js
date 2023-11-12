@@ -42,7 +42,6 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((userData) => {
-        console.log(userData);
         // Update the username and bio on the page with fetched data
         const usernameElement = document.querySelector(".username");
         const bioElement = document.querySelector(".bio");
@@ -71,7 +70,6 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
         for (const hashtag of data.data) {
           const hashtagsDiv = document.querySelector(".hashtags");
           const hashtagSpan = document.createElement("span");
@@ -91,7 +89,6 @@ window.addEventListener("load", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data);
         const friendsData = data.data;
         for (const friendData of friendsData) {
           const userCard = createUserCard(friendData);

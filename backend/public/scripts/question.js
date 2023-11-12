@@ -22,8 +22,6 @@ document
       selectedValues: selectedValues,
     };
 
-    console.log(JSON.stringify(requestData));
-
     if (jwt) {
       // Include the token in the fetch request headers
       const headers = new Headers({

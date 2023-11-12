@@ -41,7 +41,6 @@ saveBioButton.addEventListener("click", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         bioParagraph.textContent = updatedBio;
         bioParagraph.style.display = "block";
         bioTextarea.style.display = "none";
