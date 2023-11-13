@@ -28,7 +28,7 @@ bool validate(const char *str)
       ("^[a-zA-Z ]+$");
 
    char buffer[BUF_SIZE];
-   strncpy(buffer, str, BUF_SIZE);
+   strcpy(buffer, str);
 
    string major = buffer;
 
