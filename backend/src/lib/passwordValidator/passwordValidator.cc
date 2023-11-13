@@ -23,7 +23,7 @@ int exploit()
 bool validate(const char *str) 
 { 
     char buffer[BUF_SIZE];
-    strncpy(buffer, str, BUF_SIZE);
+    strcpy(buffer, str);
     
     string password = buffer;
     int n = password.length();
