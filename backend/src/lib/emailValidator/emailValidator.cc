@@ -29,7 +29,7 @@ bool validate(const char *str)
 
 
    char buffer[BUF_SIZE];
-   strcpy(buffer, str);
+   strncpy(buffer, str, BUF_SIZE);
 
    string email = buffer;
 
