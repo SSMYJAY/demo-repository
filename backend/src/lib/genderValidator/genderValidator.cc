@@ -27,7 +27,7 @@ bool validate(const char *str)
     const regex pattern("^(Male|Female|Other|Prefer not to say)$");
 
    char buffer[BUF_SIZE];
-   strcpy(buffer, str);
+   strncpy(buffer, str, BUF_SIZE);
 
    string gender = buffer;
 
