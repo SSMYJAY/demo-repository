@@ -25,10 +25,10 @@ bool validate(const char *str)
 {
    // define a regular expression
    const regex pattern
-      ("^[a-zA-Z ]+$");
+      ("^[a-zA-Z ]{1,99}$");
 
    char buffer[BUF_SIZE];
-   strcpy(buffer, str);
+   strncpy(buffer, str, BUF_SIZE);
 
    string major = buffer;
 

@@ -26,7 +26,7 @@ function validateSignupData(data) {
   if (!majorValidator.validate(major)) {
     if (isValid) {
       warningMessage +=
-        "*Please enter only alphabet characters for your major. ";
+        "*Your major contains characters other than alphabet or is too long. ";
       isValid = false;
     }
   }

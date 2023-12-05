@@ -30,11 +30,11 @@ module.exports = (app) => {
 
   router.post(
     "/signup_process",
-    check("username").notEmpty(),
+    check("username").notEmpty().isLength({ min: 3, max: 20 }).trim().escape(),
     check("email").notEmpty().isEmail().normalizeEmail(),
     check("year").notEmpty().isNumeric().trim().escape(),
-    check("major").notEmpty(),
-    check("gender").notEmpty(),
+    check("major").notEmpty().isLength({ min: 1, max: 100 }).trim().escape(),
+    check("gender").notEmpty().trim().escape(),
     check("password").notEmpty().escape(),
     check("confirmPassword").notEmpty().escape(),
     auth.processSignup
